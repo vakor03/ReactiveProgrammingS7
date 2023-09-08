@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {COURSES} from '../db-data';
 import {Course} from "./model/course";
 import {CourseCardComponent} from "./course-card/course-card.component";
@@ -8,35 +8,18 @@ import {CourseCardComponent} from "./course-card/course-card.component";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit{
+export class AppComponent implements AfterViewInit {
 
   courses = COURSES;
 
-  @ViewChild('cardRef1')
-  card1: CourseCardComponent;
-
-  @ViewChild('cardRef2', {read: ElementRef})
-  card2: ElementRef;
-
-  @ViewChild('container')
-  containerDiv: ElementRef;
+  @ViewChildren(CourseCardComponent)
+  cards: QueryList<CourseCardComponent>;
 
   onCourseSelected(course: Course) {
 
-    console.log("card 1", this.card1);
-
-    console.log("card 2", this.card2);
-
-    console.log("container", this.containerDiv);
   }
 
   ngAfterViewInit(): void {
-
-    console.log("card 1", this.card1);
-
-    console.log("card 2", this.card2);
-
-    console.log("container", this.containerDiv);
-
+    console.log(this.cards);
   }
 }
