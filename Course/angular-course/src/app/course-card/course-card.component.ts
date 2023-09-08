@@ -1,4 +1,13 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {
+  AfterContentInit,
+  AfterViewInit,
+  Component,
+  ContentChild,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output
+} from '@angular/core';
 import {Course} from "../model/course";
 
 @Component({
@@ -6,7 +15,7 @@ import {Course} from "../model/course";
   templateUrl: './course-card.component.html',
   styleUrls: ['./course-card.component.css']
 })
-export class CourseCardComponent {
+export class CourseCardComponent implements AfterContentInit{
 
   @Input({required: true})
   course: Course;
@@ -16,6 +25,9 @@ export class CourseCardComponent {
 
   @Output('courseSelected')
   courseEmitter = new EventEmitter<Course>();
+
+  @ContentChild('courseImage')
+  image: ElementRef;
 
   onCourseViewed() {
     console.log("Course card component - Course viewed: ")
@@ -40,5 +52,9 @@ export class CourseCardComponent {
     return {
       'background-image': 'url(' + this.course.iconUrl + ')'
     }
+  }
+
+  ngAfterContentInit(): void {
+    console.log("image: ", this.image);
   }
 }
