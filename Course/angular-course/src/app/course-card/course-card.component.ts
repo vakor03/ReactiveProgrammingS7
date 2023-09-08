@@ -22,4 +22,8 @@ export class CourseCardComponent {
 
     this.courseEmitter.emit(this.course);
   }
+
+  isButtonVisible() {
+    return this.course;
+  }
 }
