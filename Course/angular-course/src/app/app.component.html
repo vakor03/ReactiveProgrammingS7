@@ -10,7 +10,19 @@
   <course-card *ngFor="let course of courses; index as i"
                (courseSelected)="onCourseSelected($event)"
                [course]="course"
-               [cardIndex]="i+1"></course-card>
+               [cardIndex]="i+1">
+
+    <div class="course-image">
+      <img width="300" alt="Angular Logo"
+           [src]="course.iconUrl">
+    </div>
+
+    <div class="course-description">
+      {{ course.longDescription }}
+    </div>
+
+    Other stuff here
+  </course-card>
 
 </div>
 
