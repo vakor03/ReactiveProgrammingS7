@@ -1,27 +1,27 @@
-<div class="top-menu">
+<div highlighted class="top-menu">
 
   <img class="logo"
        src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
 
 </div>
 
-<div class="courses" #container>
+<div class="courses" #container *ngIf="courses[0] as course">
 
-  <course-card *ngFor="let course of courses; index as i"
+  <course-card highlighted #highlightedDirective="hl"
+               (toggleHighlight)="onToggleHighlight($event)"
                (courseSelected)="onCourseSelected($event)"
                [course]="course"
-               [cardIndex]="i+1">
+               [cardIndex]="1">
 
     <div class="course-image" #courseImage>
       <img width="300" alt="Angular Logo"
            [src]="course.iconUrl">
     </div>
 
-    <div class="course-description">
+    <div class="course-description" (dblclick)="highlightedDirective.toggle()">
       {{ course.longDescription }}
     </div>
 
-    Other stuff here
   </course-card>
 
 </div>
