@@ -5,7 +5,7 @@
 
 </div>
 
-<div class="courses" #container *ngIf="courses[0] as course">
+<div class="courses salmon-theme" #container *ngIf="courses[0] as course">
 
   <course-card highlighted #highlightedDirective="hl"
                (toggleHighlight)="onToggleHighlight($event)"
@@ -13,7 +13,7 @@
                [course]="course"
                [cardIndex]="1">
 
-    <div class="course-image" #courseImage>
+    <div class="course-image" #courseImage *ngxUnless="true">
       <img width="300" alt="Angular Logo"
            [src]="course.iconUrl">
     </div>
