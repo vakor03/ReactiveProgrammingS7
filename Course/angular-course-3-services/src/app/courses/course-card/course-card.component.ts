@@ -1,24 +1,19 @@
 import {
-  AfterContentChecked,
-  AfterContentInit, AfterViewChecked,
-  AfterViewInit,
   Component,
-  ContentChildren,
-  ElementRef,
   EventEmitter,
-  Input, OnChanges, OnDestroy,
-  OnInit,
-  Output,
-  QueryList, SimpleChanges,
-  ViewEncapsulation
+  Input, Output
 } from '@angular/core';
 import {Course} from '../../model/course';
-import {CourseImageComponent} from '../course-image/course-image.component';
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'course-card',
   templateUrl: './course-card.component.html',
-  styleUrls: ['./course-card.component.css']
+  styleUrls: ['./course-card.component.css'],
+  standalone: true,
+  imports: [
+    NgIf
+  ]
 })
 export class CourseCardComponent {
 

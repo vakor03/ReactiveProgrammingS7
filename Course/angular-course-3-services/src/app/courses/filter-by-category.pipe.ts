@@ -3,7 +3,8 @@ import {Course} from "../model/course";
 
 @Pipe({
   name: 'filterByCategory',
-  pure: true
+  pure: true,
+  standalone: true
 })
 export class FilterByCategoryPipe implements PipeTransform {
   transform(courses: Course[], category: string): any {
