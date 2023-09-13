@@ -3,6 +3,7 @@ import {Course} from './model/course';
 import {Observable} from 'rxjs';
 import {CoursesService} from "./services/courses.service";
 import {APP_CONFIG, AppConfig, CONFIG_TOKEN} from "../config";
+import {COURSES} from "../db-data";
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,8 @@ import {APP_CONFIG, AppConfig, CONFIG_TOKEN} from "../config";
   })
 export class AppComponent implements OnInit {
 
-  courses$: Observable<Course[]>;
+  // courses$: Observable<Course[]>;
+  courses = COURSES;
 
   constructor(private coursesService: CoursesService,
               @Inject(CONFIG_TOKEN) private config: AppConfig) {
@@ -20,7 +22,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.courses$ = this.coursesService.loadCourses();
+    // this.courses$ = this.coursesService.loadCourses();
   }
 
   save(course: Course) {
